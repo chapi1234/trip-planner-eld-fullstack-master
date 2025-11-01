@@ -1,0 +1,189 @@
+/* ELD Log Sheet Styles */
+.grid-cols-25 {
+  grid-template-columns: 1fr 1fr 1fr 1fr 2fr;
+}
+
+/* Print styles for ELD logs */
+@media print {
+  .eld-log-sheet {
+    page-break-inside: avoid;
+    margin: 0;
+    padding: 0;
+  }
+
+  .eld-log-sheet * {
+    -webkit-print-color-adjust: exact;
+    color-adjust: exact;
+  }
+}
+
+/* Duty status colors for better visibility */
+.off-duty-block {
+  background-color: #f3f4f6;
+  border-color: #9ca3af;
+}
+
+.sleeper-berth-block {
+  background-color: #dbeafe;
+  border-color: #3b82f6;
+}
+
+.driving-block {
+  background-color: #fecaca;
+  border-color: #ef4444;
+}
+
+.on-duty-block {
+  background-color: #fef3c7;
+  border-color: #f59e0b;
+}
+
+/* Grid lines */
+.eld-grid-line {
+  border-right: 1px solid #d1d5db;
+}
+
+.eld-grid-line:last-child {
+  border-right: none;
+}
+
+/* Time markers */
+.time-marker {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  border-left: 1px solid #e5e7eb;
+  pointer-events: none;
+}
+
+.time-marker::before {
+  content: attr(data-hour);
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  font-size: 10px;
+  color: #6b7280;
+}
+
+/* Status blocks */
+.status-block {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  border: 1px solid;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.status-block:hover {
+  z-index: 10;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Prevent overlapping in ELD grid */
+.eld-grid-container {
+  position: relative;
+  overflow: visible;
+  width: 1200px;
+  min-width: 1200px; /* Ensure enough space for 24 hours */
+}
+
+.eld-grid-row {
+  position: relative;
+  min-height: 80px;
+  overflow: visible;
+}
+
+/* 24-hour timeline with proper spacing */
+.eld-timeline {
+  display: flex;
+  width: 1200px;
+  min-width: 1200px;
+}
+
+.eld-hour-slot {
+  flex: 1;
+  min-width: 50px;
+  position: relative;
+  border-right: 1px solid #d1d5db;
+}
+
+.eld-hour-slot:last-child {
+  border-right: none;
+}
+
+.eld-hour-label {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  right: 2px;
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 2px;
+  padding: 2px 4px;
+  font-size: 10px;
+  font-weight: 600;
+  text-align: center;
+  z-index: 10;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.eld-time-marker {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  border-left: 2px solid #374151;
+  z-index: 2;
+  width: 2px;
+}
+
+.eld-time-marker div {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  right: 2px;
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 2px;
+  padding: 2px 4px;
+  font-size: 10px;
+  line-height: 1.2;
+  z-index: 10;
+}
+
+.eld-quarter-marker {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  border-left: 1px solid #d1d5db;
+  z-index: 1;
+  width: 1px;
+}
+
+.eld-duty-block {
+  position: absolute;
+  top: 8px;
+  bottom: 8px;
+  border: 2px solid;
+  border-radius: 4px;
+  z-index: 5;
+  min-width: 20px;
+  overflow: hidden;
+}
+
+.eld-duty-block:hover {
+  z-index: 15;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .grid-cols-25 {
+    grid-template-columns: 1fr;
+  }
+
+  .eld-log-sheet {
+    font-size: 12px;
+  }
+}
